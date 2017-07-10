@@ -1,0 +1,11 @@
+# Industry Table
+# Industries we would like to monitor performance during the first 100 days in office of the US presidents.
+#
+# Format:
+#   <industry name>, <RIC - instrument code>
+#
+S&P 500, .SPX
+Dow Jones, .DJI
+Commodities, .RTCI
+Russel 2000, .RUT
+Oil & Gas, .RTSOG
