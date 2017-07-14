@@ -4,8 +4,14 @@
 # Format:
 #   <industry name>, <RIC - instrument code>
 #
-S&P 500, .SPX
-Dow Jones, .DJI
-Commodities, .RTCI
-Russel 2000, .RUT
-Oil & Gas, .RTSOG
+Equity: S&P 500, .SPX
+Equity: Russel 200, .RUI
+Equity: Dow Jones, .DJI
+Equity: Mkt Volatility, .VIX
+Currency: USD $, =USD
+Currency: Euro, EUR=
+Currency: Canadian $, CAD=
+Currency: Mexican Peso, MXN=
+Treasury: US TSY 5Y, US5YT=RR
+Treasury: US TSY 10Y, US10YT=RR
+Treasury: US TSY 30Y, US30YT=RR
