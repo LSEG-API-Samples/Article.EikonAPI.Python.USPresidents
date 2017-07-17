@@ -1,0 +1,187 @@
+# Article.EikonAPI.Python.USPresidents
+Created by Platform Services GitHub tool on Mon Jul 10 2017
+
+# U.S. Presidents - The first 100 Days
+
+
+Coined in 1933, the **first 100 days** is sometimes used to measure the successes and accomplishments of a first-term president during the time that the president's power and influences are at their greatest.  Approval rates are largely taken from polls and surveys where the results are typically measured based on their performance.  Criteria such as the decisions made, changes based on campaign promises, etc., are expected but also general perception, and overall popularily can be very influential. In addition to public opinion, how the finanical markets respond during this time can be an interesting guide or measuring-stick when grading the first 100 days.  
+
+Using the power of Python and the Thomson Reuters Eikon Scripting API, the following article will outline a number of comparisons using a simple Python application to see how the market has responded to the first 100 days.
+
+## <a name="prerequisite"></a>Prerequisites
+
+Software components used:
+
+* [Eikon Web and Scripting API](https://developers.thomsonreuters.com/eikon-apis/eikon-web-and-scripting-apis) - Thomson Reuters interface to access Eikon data on the desktop
+* [Python](https://www.python.org/downloads/release/python-361/) (3.6.1)- Python Development Environment - version 3
+* [Jupyter notebooks](http://jupyter.org/) - Browser-based development environment to create equations, visualization and explantory text.
+* [ipywidgets](https://github.com/jupyter-widgets/ipywidgets) (6.0.0) - Interactive HTML widgets for jupyter notebooks
+  * One time initialization:
+    * **With pip**: jupyter nbextension enable --py --sys-prefix widgetsnbextension
+    * **With conda**: conda install -c conda-forge ipywidgets 
+* [Pandas](http://pandas.pydata.org/) (0.20.3) - Python Data Analysis Library
+* [Cufflinks](https://plot.ly/ipython-notebooks/cufflinks/#cufflinks-reference) (0.12.0)  - Library that greatly simplifies [Plotly](https://plot.ly/feed/) charting 
+
+**Note**: This article assumes the user has successfully installed and setup their development/testing environment based on the above setup.  The links provided above outline the details of the components, packages and how to install each.
+
+## Overview
+
+When measuring the performance of any given president, we can apply multiple scenarios that may be interesting and valuable.  For example, during the first 100 days of president Donald Trump, we can show how the Currency markets responded.  How did the US Dollar and Mexican Peso compare while Trump was in office?  Were the world indices affected differently?  In addition, it would also be interesting to determine how multiple presidents compared to eachother.  Did president Obama have any noticable effect vs president Kennedy?  Using the power of Python's modules to organize and chart complex data sets coupled with Thomson Reuters ability to easily access this historical content, we can find these answers fairly easily.
+
+Let's try out a few scenarios. 
+
+### Setup
+
+Before we begin piquing our curiousity with the different scenarios, let's first eastablish our setup.  Once a basic environment has been established based on the details outlined within the [Prerequisite](#prerequisite) section, you can grab the application code from the [GitHub repository](https://github.com/TR-API-Samples/Article.EikonAPI.Python.USPresidents).  Ensure you follow the instructions to initialize the ipywidgets library.  
+
+The application package includes the following:
+* **USPresidents_100Days.ipynb**
+  
+  The example jupyter notebook document containing the core Python instructions to execute our application.  All the input data is driven from simple text files allowing the user to easily add additional values.
+
+* **presidents.csv**
+  
+  The presidents file is a collection of (`name,date`) pairs where the date value represents the inauguration date of their first term:
+  ```text
+  Donald J Trump, 2017-01-20
+  Barack Obama, 2009-01-20 
+  George W. Bush, 2001-01-20
+  ```
+
+* **industries.csv**
+
+  The industries file contains collection of (`name,ric`) pairs where the `ric` is the Reuters Instrument Code representing the market of interest:
+
+  ```text
+  Equity: Dow Jones, .DJI
+  Equity: Mkt Volatility, .VIX
+  Currency: USD $, =USD
+  ```
+
+## Running the application
+
+The application is executed within the `Jupyter notebooks` web-based environment.
+
+**Note**: I won't be spending time providing basic instructions on the Jupyter Notebook environment and it's operation.  It is assumed you have basic familiarity.
+ 
+  To run the application, lets load up notebooks:
+
+  ```text
+  > cd <directory of the downloaded package>
+  > jupyter notebook
+  ```
+
+Within your browser, load up the `USPresidents_100Days.ipynb` application:
+
+![program](images/scr1.png)
+
+Once loaded, you can start by stepping through the code segments to reach the point where the UI is presented for your input selection.
+
+## Scenario 1 - Donald Trump and the affect on currencies
+
+At the console, you can pass command-line parameters to the utility:
+
+* #### Launching the executable JAR
+
+  \> **java -jar SpeedGuide.jar [options]**
+    
+    When launching the executable JAR, users optionally specify command-line options and have the opportunity to see the output on the console.
+		
+* #### Launching the windows wrapper EXE
+  
+  \> **SpeedGuide.exe [options]**
+
+    The windows wrapper is strictly a GUI based facility that does not have an explicit console attached.  Thus, no output can be viewed on the console.  However, users can capture the output within a file.  for example:
+		
+  \> **SpeedGuide.exe>output.txt [options]**
+	
+  
+#### Command-line Options
+
+    --host=hostname:port    Server address/hostname and port of your Market Data server.
+                            Syntax: <host/ip>:<port>.  Eg: elektron:14002 or 192.168.1.1:14002
+    --service=serviceName   Service Name providing market data content.
+                            Eg: ELEKTRON_AD.
+    --user=userName         User name required if authentication is enabled on server.
+                            Note: if no user name is provided, the utility will use your desktop login
+    --d[ebug]               Debug Mode.  Display verbose messages to the console
+    --h[elp]                Prints the options screen
+If neither the --host nor --service is provided, the utility will **prompt the user** to enter these values.
+
+Example: \> **SpeedGuide --host=elektron:14002 --service=ELEKTRON_AD --user=testuser**
+
+## Usage
+
+When launching the utility specifying insufficient command-line options, the user will be presented with a Connection dialog:
+
+![connect](images/connect.png)
+
+The _Status Pane_ at the bottom of the main window provides some general feedback, whether success or failure.  In the case where a successful connection can be made to your specified server, the utility will launch the root Speed Guide item, i.e. **THOMSONREUTERS**.
+
+**Note**: While the utility will launch the "THOMSONREUTERS" RIC, which represents the root code of the Speed Guide pages, the utility is extremely useful for developers to visualize any other instrument available within Elektron.
+
+![main](images/main.png)
+
+### Buttons
+
+The _Home_ button takes the user back to this page at any time.
+
+To navigate through the guide, double click on any text nested between **< >** characters.  Although suggested within the guides, this utility does not presently support NEWS codes nested between **[ ]** characters.
+
+The top navigation menu provides:
+
+* A _Home_ button to go back to the initial main page.
+* A _Previous_ button to go back to the previous page (if it exists).
+* A _Next_ button to go to next page (if it exists).
+* An input text field that displays the RIC for the current page, and allows entering a RIC to request.
+* A _Connect_ button when no connection has been established
+* An _Available Services_ dropdown providing the list of services available within the connected server
+
+During normal operation, or possibly at startup, the _Status Pane_ will highlight issues appropriately.  In the case where the user specifies an incorrect service, the _Available Services_ dropdown will give them the opportunity to select a valid one.
+
+![main](images/invalid.png)
+
+### Data Navigation
+
+As you navigate through the guide, double-clicking on \<**_nested items_**\>, you may be presented with a simple fieldlist display of the IDs, or Field IDs (FIDs) for a given RIC.
+
+For example:
+
+![fieldlist](images/fieldList.png)
+
+Although not presented in a user-friendly display form, the native list of fields not only provides the user the ability to research all available fields for a given asset, but also the opportunity to better understand the structure of Thomson Reuters Data. 
+
+#### Chains
+
+Navigating through the guide, you will likely come across some more complex structures.  For example, some market data elements, such as the Nasdaq Top 25, are represented as a collection of elements, or also referred to as a **_Chain_**.  A _Chain_ contains a collection of elements represented within a preset number of underlying fields within a market data record.  In the case of the Nasdaq Top 25, the underlying elements represent the Top 25 trading equities.  Because a Chain is represented within a simple _MarketPrice_ structure containing a preset number of fields, the structure offers the ability to pull up the next link within this collection.
+
+To demonstrate, we manually entered the Nasdaq Top 25 index _.AV.O_:
+
+![Chain](images/Chain.png)
+
+We can see from above, the record contains a preset number of elements (1-14) and the ability to pull up the next group of elements within the _next link_.  Feel free to navigate through the guide to discover many other assets and data elements offered by Thomson Reuters.
+
+# Solution Code
+
+The utility was developed using the [Elektron SDK Java API](https://developers.thomsonreuters.com/elektron/elektron-sdk-java) and Java's GUI library Java 8 - JavaFx.
+
+
+## Built With
+
+* [Elektron Message API](https://developers.thomsonreuters.com/elektron/elektron-sdk-java)
+* [JDK 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
+* [Eclipse](https://www.eclipse.org/efxclipse/install.html) - IDE for Java development (tested)
+
+## Contributing
+
+Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
+
+## Authors
+
+* **Susana Chang** - Release 1.1.  *Initial work*
+* **Nick Zincone** - Release 2.0.  *Additional error checking/Utilized JavaFX Scene Builder to generate FXML*
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+
