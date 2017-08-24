@@ -20,7 +20,7 @@ Using the power of Python and the Thomson Reuters Eikon Scripting API, the follo
 Details and concepts are further explained in the [U.S. Presidents - The first 100 Days]() article published on the [Thomson Reuters Developer Community portal](https://developers.thomsonreuters.com).
 
 ## <a id="disclaimer"></a>Disclaimer
-The source code presented in this project has been written by Thomson Reuters only for the purpose of illustrating the concepts of building a simple real-time quote widget.  It has not been tested for a usage in production environments.
+The source code presented in this project has been written by Thomson Reuters only for the purpose of illustrating the concepts of creating the "what-if" scenarios using Python and the Eikon Scripting API.  It has not been tested for a usage in production environments.
 
 ***Note:** To be able to ask questions and to benefit from the full content available on the [TR Developer Community portal](https://developers.thomsonreuters.com) we recommend you to [register here]( https://developers.thomsonreuters.com/iam/register) or [login here]( https://developers.thomsonreuters.com/iam/login?destination_path=Lw%3D%3D).*
 
@@ -66,7 +66,7 @@ The application package includes the following:
 
 ## Running the application
 
-The application is executed within the `Jupyter notebooks` web-based environment.
+The application is executed within the `Jupyter notebooks` web-based environment.  Prior to running the application, ensure you have launched your Eikon API Proxy - a component packaged with the Eikon Web and Scripting API bundle.
  
   To run the application, let's load up Notebook:
 
