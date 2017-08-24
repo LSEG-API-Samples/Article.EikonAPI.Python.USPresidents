@@ -1,9 +1,29 @@
 # U.S. Presidents - The first 100 Days
 
 
+## Table of Content
+
+* [Overview](#overview)
+
+* [Disclaimer](#disclaimer)
+
+* [Prerequisites](#prerequisites)
+
+* [Setup](#setup)
+
+* [Package](#package)
+
+## <a id="overview"></a>Overview
 Coined in 1933, the **first 100 days** is sometimes used to measure the successes and accomplishments of a first-term president during the time that the their power and influences are at their greatest.  Approval rates are largely taken from polls and surveys where the results are typically measured based on their performance.  Criteria such as the decisions made, changes based on campaign promises, etc., are expected but also general perception, and overall popularity can be very influential. In addition to public opinion, how the financial markets respond during this time can be an interesting guide or measuring-stick when grading the first 100 days.  
 
-Using the power of Python and the Thomson Reuters Eikon Scripting API, the following article will outline a number of comparisons using a simple Python application to see how the market has responded to the first 100 days.
+Using the power of Python and the Thomson Reuters Eikon Scripting API, the following Jupyter notebook application provides a simple mechanism to create a number of "what-if" scenarios to measure the performances of presidents to see how the market has responded to the first 100 days.
+
+Details and concepts are further explained in the [U.S. Presidents - The first 100 Days]() article published on the [Thomson Reuters Developer Community portal](https://developers.thomsonreuters.com).
+
+## <a id="disclaimer"></a>Disclaimer
+The source code presented in this project has been written by Thomson Reuters only for the purpose of illustrating the concepts of building a simple real-time quote widget.  It has not been tested for a usage in production environments.
+
+***Note:** To be able to ask questions and to benefit from the full content available on the [TR Developer Community portal](https://developers.thomsonreuters.com) we recommend you to [register here]( https://developers.thomsonreuters.com/iam/register) or [login here]( https://developers.thomsonreuters.com/iam/login?destination_path=Lw%3D%3D).*
 
 ## <a name="prerequisite"></a>Prerequisites
 
@@ -17,19 +37,9 @@ Software components used:
     * **With pip**: jupyter nbextension enable --py --sys-prefix widgetsnbextension
     * **With conda**: conda install -c conda-forge ipywidgets 
 * [Pandas](http://pandas.pydata.org/) (0.20.3) - Python Data Analysis Library
-* [Cufflinks](https://plot.ly/ipython-notebooks/cufflinks/#cufflinks-reference) (0.12.0)  - Library that greatly simplifies [Plotly](https://plot.ly/feed/) charting 
+* [Cufflinks](https://plot.ly/ipython-notebooks/cufflinks/#cufflinks-reference) (0.12.0)  - Library that greatly simplifies [Plotly](https://plot.ly/feed/) charting  
 
-**Note**: This article assumes the user has successfully installed and setup their development/testing environment based on the above requirements.  The links provided outline the details of the components, packages and how to install each.  In addition, we won't be spending time providing basic instructions on the Jupyter Notebook environment and its operation.  It is assumed you have basic familiarity.
-
-## Overview
-
-When measuring the performance of any given president, we can apply multiple scenarios that may be interesting and possibly support approval ratings.  For example, during the first 100 days of President Donald Trump, we can show how the Currency markets responded.  How did the US Dollar and Mexican Peso compare while Trump was in office?  Were the world indices affected differently?  In addition, it would also be interesting to determine how multiple presidents compared to each other.  Did president Obama have any noticeable effect vs president Kennedy?  Using the power of Python's modules to organize and chart complex data sets coupled with Thomson Reuters ability to easily access this historical content, we can find these answers fairly easily.
-
-Let's try out a few scenarios. 
-
-### Setup
-
-Before we begin playing with different scenarios, let's first establish our setup.  As outlined within the [Prerequisite](#prerequisite) section, once a basic environment has been defined, you can grab the application code from the [GitHub repository](https://github.com/TR-API-Samples/Article.EikonAPI.Python.USPresidents).
+## <a name="setup"></a>Setup
 
 The application package includes the following:
 * **USPresidents_100Days.ipynb**
@@ -72,55 +82,15 @@ Within your browser, load up the `USPresidents_100Days.ipynb` application:
 
 Once loaded, you can start by stepping through the code segments to reach the point where the UI is presented for your input selection.
 
-## Scenario 1 - Donald Trump - Effect on Currencies
-
-According to this [Business Insider article](http://www.businessinsider.com/stock-markets-after-trump-election-2016-12), __prior__ to Trumps inauguration, stocks were on a tear.  During this same timeframe, it was clear how his much publicized rhetoric [triggered Currencies in a big way](http://www.visualcapitalist.com/chart-trump-effect-currencies/).  As we learned from the article referenced above, between Nov 7th 2016 and Jan 5th 2017, the Russian Ruble gained 7.7% against the US Dollar while the Mexican Peso lost 13.4% - supposedly largely due to market reaction to then president elect’s comments on Twitter. Let’s take a look at how these currencies faired against the USD during president Trump’s first 100 days in the office.  
-
-First, select our input parameters from the UI:
-
-![scenario1Input](images/scr2.png)
-
-Retrieve the raw data:
-
-![scenario1Data](images/scr3.png)
-
-We see both currencies strengthening against the USD and we see strong correlation between these two currencies. Additionally, we can see the Mexican Peso strongly outperforming the Russian Ruble.
-
-![scenario1Chart](images/scr4.png)
-
-And to support the above comparison, we can utilize Thomson Reuters convenient Cross Rate RICs to measure performance against 2 currencies.  In our case, the instrument **MXN vs RUB** (MXNRUB=R) was chosen which shows the Mexican Peso outperforming the Russian Ruble during this time period.
-
-![scenario1Chart](images/scr4a.png)
-
-## Scenario 2 - Comparing multiple presidents against a given market
-
-While using the markets to measure performance of the first hundred days can be an indicator, it certainly isn't the only influence.  Aside from the direct performance of the president during those first hundred days, many uncontrollable external events have had great effect on the economy and market.  For example, some of the presidents over the last century have had to endure such crisis as the Great Depression, the Great Recession, etc. which can significantly skew some indicators.  
-
-The next simple comparison we demonstrated is the comparison of multiple presidents against any given market.  Let's select the last 4 presidents and compare against the S&P 500 index:
-
-![scenario2Data](images/scr6.png)
-
-![scenario2Graph1](images/scr7.png)
-
-The example application also includes some additional views providing a slightly different breakdown of performance:
-
-![scenario2Graph1](images/scr8.png)
-
-![scenario2Graph1](images/scr9.png)
-
- ### Next steps
-
-There are a number of articles and papers published over the years discussing the importance of the first 100 days.  It is believed that many Presidents have higher success rates during the first hundred days of their first year than they do later during their first year or during the first hundred days of non-inaugural years.  Feel free to satisfy your own curiosity and explore the many combinations with this simple tool.
-
-## Contributing
+### <a id="contributing"></a>Contributing
 
 Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
 
-## Authors
+### <a id="authors"></a>Authors
 
-* **Nick Zincone** - Release 1.0.  *Initial work*
+* **Nick Zincone** - Release 1.0.  *Initial version*
 
-## License
+### <a id="license"></a>License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
 
