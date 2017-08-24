@@ -11,7 +11,6 @@
 
 * [Setup](#setup)
 
-* [Package](#package)
 
 ## <a id="overview"></a>Overview
 Coined in 1933, the **first 100 days** is sometimes used to measure the successes and accomplishments of a first-term president during the time that the their power and influences are at their greatest.  Approval rates are largely taken from polls and surveys where the results are typically measured based on their performance.  Criteria such as the decisions made, changes based on campaign promises, etc., are expected but also general perception, and overall popularity can be very influential. In addition to public opinion, how the financial markets respond during this time can be an interesting guide or measuring-stick when grading the first 100 days.  
