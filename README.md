@@ -31,7 +31,7 @@ Software components used:
 * [Eikon Web and Scripting API](https://developers.thomsonreuters.com/eikon-apis/eikon-web-and-scripting-apis) - Thomson Reuters interface to access Eikon data on the desktop
 * [Python](https://www.python.org/downloads/release/python-361/) (3.6.1)- Python Development Environment - version 3
 * [Jupyter notebooks](http://jupyter.org/) - Browser-based development environment to create equations, visualization and explanatory text.
-* [ipywidgets](https://github.com/jupyter-widgets/ipywidgets) (6.0.0) - Interactive HTML widgets for jupyter notebooks
+* [ipywidgets](https://github.com/jupyter-widgets/ipywidgets) (7.0.0) - Interactive HTML widgets for jupyter notebooks
   * One time initialization:
     * **With pip**: jupyter nbextension enable --py --sys-prefix widgetsnbextension
     * **With conda**: conda install -c conda-forge ipywidgets 
